@@ -12,17 +12,27 @@
                         <th><label>操作</label></th>
                     </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <% for(var i in lgimglist) {%>
+                            <tr>
+                                    <td style="height:50px"><div id="preview">
+                                        <image src="<%= lgimglist[i].path %>" style="width:5rem;height:5rem" >
+                                    </td>
+                                    <td>
+                                        <button type="button" value="<%= lgimglist[i].filename %>" class="btn btn-danger btn-sm" onclick="lgdel($(this))">删除</button>
+                                    </td>
+                                </tr> 
+                        <% } %>
+                    </tbody>
                     <tfoot>
                     <tr>
                         <td style="height:80px"><div id="preview">
-                            <input id='file' class="file" type="file" accept="image/*" name=""  >
+                            <input id='file' class="file" type="file" accept="image/*" name="file"  >
                         </div>
                             <label for="file" class=''>上传</label> 
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addStoreConf($(this))">增加</button>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addStoreConf($(this))">删除</button>
+                            <button type="button" class="btn btn-success btn-sm" onclick="lgadd($(this))">增加</button>
                         </td>
                     </tr>
                     </tfoot>

@@ -39,5 +39,7 @@ module.exports = (app) =>{
     app.post('/user/register/add',upload.single('file') ,user.registeradd);
     app.post('/user/register/del', urlencodeParser ,user.regdel);
     app.get('/user/login', user.login);
+    app.post('/user/login/add',upload.single('file') ,user.lgadd);
+    app.post('/user/login/del', urlencodeParser ,user.lgdel);
     app.get('/user/search', user.search);
 }

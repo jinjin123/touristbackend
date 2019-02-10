@@ -3,8 +3,10 @@ const mongoHelper = require('../utils/mongoUtils')
 const config =require('../config')
 var userDBModel = require('../models/userimg.js');
 var regDBModel = require('../models/registerimg.js');
+var lgDBModel = require('../models/loginimg.js');
 var userimg =new userDBModel.Schema("userimg").model;
 var regimg =new regDBModel.Schema("regimg").model;
+var lgimg =new lgDBModel.Schema("lgimg").model;
 exports.index = function (req, res ) {
     userimg.find({},function (err,userImgList){
         if (err) return console.error(err);
@@ -86,11 +88,47 @@ exports.regdel = function(req,res){
 }
 
 exports.login = function (req, res ) {
-    var data = {};
-    data.title   = '目的地';
-    data.content = 'user-login';
-    res.render('index',data)
+    lgimg.find({},function (err,lgimglist){
+        if (err) return console.error(err);
+        var data = {};
+        data.lgimglist = lgimglist
+        data.title   = '目的地';
+        data.content = 'user-login';
+        res.render('index',data)
+    })
 };
+
+exports.lgadd = function (req, res ) {
+    var lgImg = new lgimg();
+    lgImg.filename =req.file.filename 
+    lgImg.path = config.host + config.port + '/images/' + req.file.filename
+    lgImg.des = req.body.des
+    lgImg.save(function (err,lgImg){
+        if (err) return console.error(err);
+    })
+    lgimg.find({},function (err,lgImgList){
+        if (err) return console.error(err);
+        res.json({
+            "code":0,
+            "data":lgImgList
+        })
+    })
+}
+
+exports.lgdel = function(req,res){
+    console.log(req.body)
+    var where = {"filename": req.body.filename}
+    lgimg.remove(where,function (err,lgImg){
+        if (err) return console.error(err);
+    })
+    lgimg.find({},function (err,lgImgList){
+        if (err) return console.error(err);
+        res.json({
+            "code":0,
+            "data":lgImgList
+        })
+    })
+}
 
 exports.search = function (req, res ) {
     var data = {};
