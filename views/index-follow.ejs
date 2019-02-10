@@ -8,25 +8,27 @@
                 <table id="kc_config_table" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th class="">图片<span class="arrow asc"></span></th>
-                        <th class="">图标信息<span class="arrow asc"></span></th>
-                        <th class="">栏目<span class=""></span></th>
+                        <th class="">用户名<span class="arrow asc"></span></th>
+                        <th class="">年龄<span class="arrow asc"></span></th>
+                        <th class="">毕业学校<span class=""></span></th>
+                        <th class="">备注<span class=""></span></th>
                         <th><label>操作</label></th>
                     </tr>
                     </thead>
                     <tbody></tbody>
                     <tfoot>
                     <tr>
-                        <td style="height:80px"><div id="preview">
+                        <!-- <td style="height:80px"><div id="preview">
                             <input id='file' class="file" type="file" accept="image/*" name="mc_id"  >
-                        </div>
                             <label for="file" class=''>上传</label> 
-                        </td>
-                        <td><input type="text" name="mc_pass" placeholder="如：推荐 | 关注 " ></td>
-                        <td><input type="text" name="store_id" placeholder="如: 推荐 | 关注" ></td>
+                        </td> -->
+                        <td><input type="text" name="user" placeholder=" " ></td>
+                        <td><input type="text" name="age" placeholder=" " ></td>
+                        <td><input type="text" name="school" placeholder="" ></td>
+                        <td><input type="text" name="comment" placeholder="" ></td>
                         <td>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addStoreConf($(this))">增加</button>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addStoreConf($(this))">删除</button>
+                            <button type="button" class="btn btn-success btn-sm" onclick="userfoadd($(this))">增加</button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="userfoadd($(this))">删除</button>
                         </td>
                     </tr>
                     </tfoot>

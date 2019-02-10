@@ -2,11 +2,13 @@
 const mongoHelper = require('../utils/mongoUtils')
 const config =require('../config')
 var userDBModel = require('../models/userimg.js');
+var usernodeDBModel = require('../models/usernodeimg.js');
 var regDBModel = require('../models/registerimg.js');
 var lgDBModel = require('../models/loginimg.js');
 var userimg =new userDBModel.Schema("userimg").model;
 var regimg =new regDBModel.Schema("regimg").model;
 var lgimg =new lgDBModel.Schema("lgimg").model;
+var usernodeimg =new usernodeDBModel.Schema("usernodeimg").model;
 exports.index = function (req, res ) {
     userimg.find({},function (err,userImgList){
         if (err) return console.error(err);
@@ -22,6 +24,7 @@ exports.add = function (req, res ) {
     userImg.filename =req.file.filename 
     userImg.path = config.host + config.port + '/images/' + req.file.filename
     userImg.des = req.body.des
+    userImg.po = req.body.po
     userImg.save(function (err,userImg){
         if (err) return console.error(err);
     })
@@ -115,8 +118,23 @@ exports.lgadd = function (req, res ) {
     })
 }
 
+exports.nodeadd = function (req, res ) {
+    // console.log(req.files)
+    let filearr = req.files
+    for(let i=0,b=filearr.length;i<b;i++){
+        var usernodeImg = new usernodeimg();
+        usernodeImg.filename = filearr[i].filename
+        usernodeImg.path = config.host + config.port + '/images/' + filearr[i].filename
+        usernodeImg.save(function (err,usernodeImg){
+            if (err) return console.error(err);
+              res.end("aaa")
+        }) 
+
+    }
+}
+
 exports.lgdel = function(req,res){
-    console.log(req.body)
+    // console.log(req.body)
     var where = {"filename": req.body.filename}
     lgimg.remove(where,function (err,lgImg){
         if (err) return console.error(err);
@@ -124,7 +142,6 @@ exports.lgdel = function(req,res){
     lgimg.find({},function (err,lgImgList){
         if (err) return console.error(err);
         res.json({
-            "code":0,
             "data":lgImgList
         })
     })

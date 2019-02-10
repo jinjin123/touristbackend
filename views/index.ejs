@@ -57,12 +57,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <% include des-cate.ejs  %>
     <% } else if (content === 'store-index') { %>
     <% include store-index.ejs  %>
-    <% } else if (content === 'store-traffic') { %>
+    <!-- <% } else if (content === 'store-traffic') { %>
     <% include store-traffic.ejs  %>
     <% } else if (content === 'store-auth') { %>
     <% include store-auth.ejs  %>
     <% } else if (content === 'store-ticket') { %>
-    <% include store-ticket.ejs  %>
+    <% include store-ticket.ejs  %> -->
     <% } else if (content === 'user-index') { %>
     <% include user-index.ejs  %>
     <% } else if (content === 'user-register') { %>
@@ -89,6 +89,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/javascripts/layer/layer.js"></script>
 <script src="/javascripts/custom.js"></script>
 <script src="/javascripts/user.js"></script>
+<script src="/javascripts/store.js"></script>
+<script src="/javascripts/des.js"></script>
+<script src="/javascripts/desnode.js"></script>
+<script src="/javascripts/descate.js"></script>
 <script>$('.store_config').addClass('active');</script>
 </body>
 </html>

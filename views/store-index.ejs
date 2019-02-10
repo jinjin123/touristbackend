@@ -1,41 +1,52 @@
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-
-    <!-- Main content -->
-    <section class="content">
-        <div id="block_content" class="box">
-            <div id="content_main" class="box-body">
-                <table id="kc_config_table" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th class="">图片<span class="arrow asc"></span></th>
-                        <th class="">图标信息<span class="arrow asc"></span></th>
-                        <th class="">栏目<span class=""></span></th>
-                        <th><label>操作</label></th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                    <tfoot>
-                    <tr>
-                        <td style="height:80px"><div id="preview">
-                            <input id='file' class="file" type="file" accept="image/*" name="mc_id"  >
-                        </div>
-                            <label for="file" class=''>上传</label> 
-                        </td>
-                        <td><input type="text" name="mc_pass" placeholder="图标下面的文字如：推荐 | 关注 " ></td>
-                        <td><input type="text" name="store_id" placeholder="如: 推荐 | 关注" ></td>
-                        <td>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addStoreConf($(this))">增加</button>
-                            <button type="button" class="btn btn-success btn-sm" onclick="addStoreConf($(this))">删除</button>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
+        <!-- Content Header (Page header) -->
+    
+        <!-- Main content -->
+        <section class="content">
+            <div id="block_content" class="box">
+                <div id="content_main" class="box-body">
+                    <table id="kc_config_table" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th class="">图片<span class="arrow asc"></span></th>
+                            <th class="">优惠类型<span class=""></span></th>
+                            <th><label>操作</label></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                         <% for(var i in storelist) {%>
+                            <tr>
+                                    <td style="height:50px"><div id="preview">
+                                        <image src="<%= storelist[i].path %>" style="width:5rem;height:5rem" >
+                                    </td>
+                                    <td><input type="text" name="type" value="<%= storelist[i].type %>" ></td>
+                                    <td>
+                                        <button type="button"  class="btn btn-danger btn-sm" value="<%= storelist[i].filename %>" onclick="storedel($(this))">删除</button>
+                                    </td>
+                                </tr> 
+                        <% } %>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td style="height:30px"><div id="preview">
+                                <input id='file' class="file" type="file" accept="image/*" name="file" >
+                               <div>
+                                <label for="file" class='' style="position: absolute;left:90px">上传</label> 
+                            </div>
+                            </td>
+                            <td><input type="text" name="type" style="width:200px" placeholder="cheap|discount|station|banner " ></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="storeadd($(this))">增加</button>
+                                <!-- <button type="button" class="btn btn-success btn-sm" onclick="user_index_del($(this))">删除</button> -->
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-
-    </section>
-    <!-- /.content -->
-</div>
+            <!-- /.box -->
+    
+        </section>
+        <!-- /.content -->
+    </div>

@@ -23,14 +23,22 @@ module.exports = (app) =>{
     app.get('/index/recomment', index.recomment);
 
     app.get('/des/index', des.index);
-    app.get('/des/recomment', des.recomment);
-    app.get('/des/node', des.node);
-    app.get('/des/cate', des.cate);
+    app.post('/des/index/add',upload.single('file'), des.add);
+    app.post('/des/index/del', urlencodeParser,des.del);
+    app.get('/des/recomment/index', des.recomment);
+    app.get('/des/node/index', des.node);
+    app.post('/des/node/add',upload.single('file'), des.nodeadd);
+    app.post('/des/node/del', urlencodeParser,des.nodedel);
+    app.get('/des/cate/index', des.cate);
+    app.post('/des/cate/add',upload.single('file'), des.cateadd);
+    app.post('/des/cate/del', urlencodeParser,des.catedel);
 
     app.get('/store/index', store.index);
-    app.get('/store/traffic', store.traffic);
-    app.get('/store/auth', store.auth);
-    app.get('/store/ticket', store.ticket);
+    app.post('/store/add',upload.single('file') ,store.add);
+    app.post('/store/del', urlencodeParser ,store.del);
+    // app.get('/store/traffic', store.traffic);
+    // app.get('/store/auth', store.auth);
+    // app.get('/store/ticket', store.ticket);
 
     app.get('/user/index', user.index);
     app.post('/user/index/add',upload.single('file'), user.add);
@@ -42,4 +50,6 @@ module.exports = (app) =>{
     app.post('/user/login/add',upload.single('file') ,user.lgadd);
     app.post('/user/login/del', urlencodeParser ,user.lgdel);
     app.get('/user/search', user.search);
+
+    app.post('/usernode/add',upload.array('file',2), user.nodeadd);
 }

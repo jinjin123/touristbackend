@@ -3,14 +3,17 @@ function user_index_add(self) {
     var file = ((self.parents('tr').find("input[type='file']").val()).split("\\"))[2];
     var fileobj = self.parents('tr').find("input[type='file']").get(0).files[0];
     var des = self.parents('tr').find("input[name='des']").val();
+    var po = self.parents('tr').find("input[name='po']").val();
 
-    if (!file || !des) {
+    if (!file || !des || !po) {
         layer.alert('请填写正确的数据！', {icon: 6});
     } else {
+        if(po=='buttom' || po=='middle'){
             var formData = new FormData();
             formData.append("file",fileobj)
             formData.append("img_name",file)
             formData.append("des",des)
+            formData.append("po",po)
             $.ajax({  
                 url: "/user/index/add", 
                 type: 'POST',  
@@ -25,6 +28,9 @@ function user_index_add(self) {
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
+        }else{
+            layer.alert('请填写正确的数据！', {icon: 6});
+        }
     }
 }
 function user_index_del(self) {
@@ -33,19 +39,6 @@ function user_index_del(self) {
     $.post("/user/index/del",data,function(data){
         renderTbody(data.data)
     })
-    // $.ajax({  
-    //     url: "/user/index/del", 
-    //     type: 'POST',  
-    //     data: formData,  
-    //     dataType: 'JSON',  
-    //     cache: false,  
-    //     processData: false,  
-    //     contentType: false,
-    //     success:function(data){
-    //         console.log(data)
-    //         // renderTbody(data.data)
-    //     }  
-    // })
     layer.msg('配置添加成功', {icon: 1});
 }
 function renderTbody(data) {
@@ -56,6 +49,7 @@ function renderTbody(data) {
         tr += '<tr>' +
             '<td><image src="'+ data[i].path +'" style="height:5rem;width:5rem"></td>' +
             '<td><input type="text" name="des" value="'+ data[i].des +'" disabled="disabled"></td>' 
+            '<td><input type="text" name="des" value="'+ data[i].po +'" disabled="disabled"></td>' 
         tr += '<td>' +
             '<button type="button" class="btn btn-danger btn-sm" onclick="user_index_del($(this))">删除</button>' +
             '</td>' +
