@@ -1,0 +1,54 @@
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+    
+        <!-- Main content -->
+        <section class="content">
+            <div id="block_content" class="box">
+                <div id="content_main" class="box-body">
+                    <table id="kc_config_table" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th class="">图片<span class="arrow asc"></span></th>
+                            <th class="">图标描述<span class="arrow asc"></span></th>
+                            <th><label>操作</label></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                         <% for(var i in userlist) {%>
+                            <tr>
+                                    <td style="height:50px"><div id="preview">
+                                        <image src="<%= userlist[i].path %>" style="width:5rem;height:5rem" >
+                                       <div>
+                                    </div>
+                                    </td>
+                                    <td><input type="text" name="des" value="<%= userlist[i].des %>" ></td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" onclick="user_index_del($(this))">删除</button>
+                                    </td>
+                                </tr> 
+                        <% } %>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td style="height:30px"><div id="preview">
+                                <input id='file' class="file" type="file" accept="image/*" name="file" >
+                               <div>
+                                <label for="file" class='' style="position: absolute;left:90px">上传</label> 
+                            </div>
+                            </td>
+                            <td><input type="text" name="des" placeholder="如：推荐 | 关注 " ></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="user_index_add($(this))">增加</button>
+                                <!-- <button type="button" class="btn btn-success btn-sm" onclick="user_index_del($(this))">删除</button> -->
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+    
+        </section>
+        <!-- /.content -->
+    </div>

@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="/AdminLTE/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">-->
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
     <!-- Theme style -->
     <link rel="stylesheet" href="/AdminLTE/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/AdminLTE/dist/css/custom.css">
@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="/AdminLTE/dist/css/skins/skin-blue.min.css">
+    <!-- <script src="/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,18 +43,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <% include main-sidebar.ejs %>
 
     <!-- Content Wrapper. Contains page content -->
-    <% if (content === 'kc-config') { %>
-    <% include kc-config.ejs  %>
-    <% } else if (content === 'basic-page') { %>
-    <% include store-config.ejs  %>
+    <% if (content === 'index-follow') { %>
+    <% include index-follow.ejs  %>
+    <% } else if (content === 'index-recomment') { %>
+    <% include index-recomment.ejs  %>
+    <% } else if (content === 'des-index') { %>
+    <% include des-index.ejs  %>
+    <% } else if (content === 'des-recomment') { %>
+    <% include des-recomment.ejs  %>
+    <% } else if (content === 'des-node') { %>
+    <% include des-node.ejs  %>
+    <% } else if (content === 'des-cate') { %>
+    <% include des-cate.ejs  %>
+    <% } else if (content === 'store-index') { %>
+    <% include store-index.ejs  %>
+    <% } else if (content === 'store-traffic') { %>
+    <% include store-traffic.ejs  %>
+    <% } else if (content === 'store-auth') { %>
+    <% include store-auth.ejs  %>
+    <% } else if (content === 'store-ticket') { %>
+    <% include store-ticket.ejs  %>
+    <% } else if (content === 'user-index') { %>
+    <% include user-index.ejs  %>
+    <% } else if (content === 'user-register') { %>
+    <% include user-register.ejs  %>
+    <% } else if (content === 'user-login') { %>
+    <% include user-login.ejs  %>
+    <!-- <% } else if (content === 'user-search') { %> -->
+    <!-- <% include user-search.ejs  %> -->
     <% } %>
     <!-- /.content-wrapper -->
-
-    <!-- Main Footer -->
-    <!-- <% include main-footer.ejs %> -->
-
-    <!-- Add the sidebar's background. This div must be placed
-         immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -69,6 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- layer js -->
 <script src="/javascripts/layer/layer.js"></script>
 <script src="/javascripts/custom.js"></script>
+<script src="/javascripts/user.js"></script>
 <script>$('.store_config').addClass('active');</script>
 </body>
 </html>

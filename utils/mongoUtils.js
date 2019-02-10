@@ -8,10 +8,9 @@ exports.mongoObj = function(){
 }
 
 /// create a connection to the DB
-exports.CreateConnection=function(callback,returnFunc){
-    var connection = mongoose.createConnection(dburl);
+exports.CreateConnection=function(){
+    var db = mongoose.connection;
 
-    connection.on('open', function() {
-    callback(connection,returnFunc);
-});
+    db.on('open', function() {
+    });
 }

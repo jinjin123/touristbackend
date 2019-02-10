@@ -1,35 +1,43 @@
 'use strict';
+const index = require('./controllers/index');
+const des = require('./controllers/des');
+const store = require('./controllers/store');
 const user = require('./controllers/user');
-// const indexObj = require('./controllers/index');
-// const fileObj = require('./controllers/fileSystem');
-// const mongoObj = require('./controllers/mongoManagement');
-// const articleObj = require('./controllers/article');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const urlencodeParser = bodyParser.urlencoded({extended: false});
+const  storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb(null, 'public/images')  //这里是图片存储路劲
+    },
+    filename: function (req, file, cb){
+        cb(null, file.originalname)
+    }
+});
+const upload = multer({
+    storage: storage
+});
+
 module.exports = (app) =>{
-    app.get('/', user.login);
-    // app.post('/onLogin', user.onLogin);
-    // app.get('/userList', user.userList);
-    // app.get('/user/addUser', user.addUser);
-    // app.get('/user/userManager', user.userManager);
+    app.get('/', index.login);
+    app.get('/index/recomment', index.recomment);
 
-    // app.post('/index/newContent', indexObj.newContent);
-    // app.get('/index', indexObj.index);
-    // app.get('/index/:id', indexObj.viewContect);
-    // app.get('/index/:id/edit', indexObj.editContect);
-    // app.post('/index/:id/edit', indexObj.saveContect);
-    // app.get('/index/:id/delete', indexObj.deleteContectById);
+    app.get('/des/index', des.index);
+    app.get('/des/recomment', des.recomment);
+    app.get('/des/node', des.node);
+    app.get('/des/cate', des.cate);
 
-    // app.all("/mongo/index",mongoObj.index);
+    app.get('/store/index', store.index);
+    app.get('/store/traffic', store.traffic);
+    app.get('/store/auth', store.auth);
+    app.get('/store/ticket', store.ticket);
 
-    // app.get("/file/*",fileObj.initFileInfo)
-    // app.get("/fileBrowser/pdf/*",fileObj.initPdf)
-
-    // app.get("/article/articleManager/:articleId?",articleObj.initManager);
-    // app.get("/article/articleDetail/:articleId?",articleObj.articleDetail);
-    // app.get("/article/articleItem",articleObj.articleItem);
-    // app.all("/article/search",articleObj.search)
-
-    // app.post("/article/saveArticleType",articleObj.saveArticleType);
-    // app.post("/article/saveArticleDetail",articleObj.saveArticleDetail);
-    // app.get("/article/listContext",articleObj.listContextPage);
-    // app.get("/article/articleTypeAll",articleObj.articleTypeAll);
+    app.get('/user/index', user.index);
+    app.post('/user/index/add',upload.single('file'), user.add);
+    app.post('/user/index/del', urlencodeParser ,user.del);
+    app.get('/user/register', user.register);
+    app.post('/user/register/add',upload.single('file') ,user.registeradd);
+    app.post('/user/register/del', urlencodeParser ,user.regdel);
+    app.get('/user/login', user.login);
+    app.get('/user/search', user.search);
 }

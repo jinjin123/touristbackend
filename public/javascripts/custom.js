@@ -2,7 +2,6 @@ $(function(){
     var preview = document.querySelector('#preview');
     var eleFile = document.querySelector('#file');
     eleFile.addEventListener('change', function() {
-        console.log('aa')
         var file = this.files[0];                
         // 确认选择的文件是图片                
         if(file.type.indexOf("image") == 0) {

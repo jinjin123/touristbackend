@@ -16,12 +16,17 @@ urlHelper(app)
 mongoHelper.connect(function(error){
     if (error) throw error;
 });
+mongoHelper.CreateConnection(function(error){
+    if (error) throw error;
+})
+
+
 app.on('close', function(errno) {
 	mongoHelper.disconnect(function(err) { });
 });
 
 
 
-app.listen(3000, function(req, res){
+app.listen(4000, function(req, res){
     console.log('已经可以访问啦 http://localhost:3000');
 })
