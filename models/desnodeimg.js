@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const desnodeSchema = new Schema({
     filename:String,
     path:String,
-    po:String,
+    title:String,
+    tag:String,
+    content:String,
     create_date: { type: Date, default: Date.now }
 });
 mongoose.model('desnodeimg', desnodeSchema);

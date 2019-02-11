@@ -9,8 +9,9 @@
                     <thead>
                     <tr>
                         <th class="">图片<span class="arrow asc"></span></th>
-                        <!-- <th class="">图标描述<span class=""></span></th> -->
-                        <th class="">位置<span class=""></span></th>
+                        <th class="">标题<span class=""></span></th>
+                        <th class="">内容<span class=""></span></th>
+                        <th class="">标签<span class=""></span></th>
                         <th><label>操作</label></th>
                     </tr>
                     </thead>
@@ -22,9 +23,11 @@
                                    <div>
                                 </div>
                                 </td>
-                                <td><input type="text" name="po" value="<%= desnodelist[i].po %>" ></td>
+                                <td><input type="text" name="title" value="<%= desnodelist[i].title %>" ></td>
+                                <td><input type="text" name="content" value="<%= desnodelist[i].content %>" ></td>
+                                <td><input type="text" name="tag" value="<%= desnodelist[i].tag %>" ></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-sm" value="<%= desnodelist[i].filename %>" onclick="desnodedel($(this))">删除</button>
+                                    <button type="button" class="btn btn-danger btn-sm" value="<%= desnodelist[i].title %>" onclick="desnodedel($(this))">删除</button>
                                 </td>
                             </tr> 
                     <% } %>
@@ -38,7 +41,9 @@
                         </div>
                         </td>
                         <!-- <td><input type="text" name="des" placeholder="攻略|酒店 " ></td> -->
-                        <td><input type="text" name="po" placeholder="banner|middle|top" ></td>
+                        <td><input type="text" name="title" placeholder="banner|middle|top" ></td>
+                        <td><input type="text" name="content"  ></td>
+                        <td><input type="text" name="tag" ></td>
                         <td>
                             <button type="button" class="btn btn-success btn-sm" onclick="desnodeadd($(this))">增加</button>
                             <!-- <button type="button" class="btn btn-success btn-sm" onclick="user_index_del($(this))">删除</button> -->

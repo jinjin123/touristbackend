@@ -8,27 +8,38 @@
                 <table id="kc_config_table" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th class="">用户名<span class="arrow asc"></span></th>
-                        <th class="">年龄<span class="arrow asc"></span></th>
-                        <th class="">毕业学校<span class=""></span></th>
-                        <th class="">备注<span class=""></span></th>
+                        <th class="">图片<span class="arrow asc"></span></th>
+                        <!-- <th class="">位置<span class=""></span></th> -->
                         <th><label>操作</label></th>
                     </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                     <% for(var i in fllist) {%>
+                        <tr>
+                                <td style="height:50px"><div id="preview">
+                                    <image src="<%= fllist[i].path %>" style="width:5rem;height:5rem" >
+                                   <div>
+                                </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm" value="<%= fllist[i].filename %>" onclick="fldel($(this))">删除</button>
+                                </td>
+                            </tr> 
+                    <% } %>
+                    </tbody>
                     <tfoot>
                     <tr>
-                        <!-- <td style="height:80px"><div id="preview">
-                            <input id='file' class="file" type="file" accept="image/*" name="mc_id"  >
-                            <label for="file" class=''>上传</label> 
-                        </td> -->
-                        <td><input type="text" name="user" placeholder=" " ></td>
-                        <td><input type="text" name="age" placeholder=" " ></td>
-                        <td><input type="text" name="school" placeholder="" ></td>
-                        <td><input type="text" name="comment" placeholder="" ></td>
+                        <td style="height:30px"><div id="preview">
+                            <input id='file' class="file" style="width:125px" type="file" accept="image/*" name="file" >
+                           <div>
+                            <label for="file" class='' style="position: absolute;left:90px">上传</label> 
+                        </div>
+                        </td>
+                        <!-- <td><input type="text" name="des" placeholder="攻略|酒店 " ></td> -->
+                        <!-- <td><input type="text" name="po" placeholder="banner|middle|top" ></td> -->
                         <td>
-                            <button type="button" class="btn btn-success btn-sm" onclick="userfoadd($(this))">增加</button>
-                            <button type="button" class="btn btn-danger btn-sm" onclick="userfoadd($(this))">删除</button>
+                            <button type="button" class="btn btn-success btn-sm" onclick="fladd($(this))">增加</button>
+                            <!-- <button type="button" class="btn btn-success btn-sm" onclick="user_index_del($(this))">删除</button> -->
                         </td>
                     </tr>
                     </tfoot>

@@ -19,6 +19,55 @@ exports.index = function (req, res ) {
         res.render('index',data)
     })
 };
+exports.api_index = function (req, res ) {
+    userimg.find({},function (err,userImgList){
+        if (err) return console.error(err);
+        // console.log(userImgList)
+        let tmp = []
+        for(let i=0,b=userImgList.length;i<b;i++){
+           let img = userImgList[i].path
+           let title = userImgList[i].des
+           tmp.push({"img":img,"title":title})
+        }
+        var data = {};
+        data.normalBar =tmp 
+        data.userbox = tmp
+        res.json({'data':data})
+    })
+};
+exports.api_login_index = function (req, res ) {
+    lgimg.find({},function (err,lgimglist){
+        if (err) return console.error(err);
+        let data = {};
+        // let tmp = []
+        for(let i=0,b=lgimglist.length;i<b;i++){
+           let img = lgimglist[i].path
+           data.denglubj = img
+           data.denglutubiao1 = img
+           data.denglutubiao2 = img
+           data.denglutubiao3 = img
+        }
+        res.json({'data':data})
+    })
+};
+exports.api_reg_index = function (req, res ) {
+    regimg.find({},function (err,regimglist){
+        if (err) return console.error(err);
+        let data = {};
+        // let tmp = []
+        for(let i=0,b=regimglist.length;i<b;i++){
+           let img = regimglist[i].path
+           data.zhucebj = img
+           data.zhucetext1='先逛一逛',
+           data.zhucetext2='你好,',
+           data.zhucetext3='欢迎来到超自由旅行',
+           data.zhucetext4='每一次旅行都超自由！',
+           data.zhuceanniu1='登录',
+           data.zhuceanniu2='注册'
+        }
+        res.json({'data':data})
+    })
+};
 exports.add = function (req, res ) {
     var userImg = new userimg();
     userImg.filename =req.file.filename 
@@ -119,15 +168,21 @@ exports.lgadd = function (req, res ) {
 }
 
 exports.nodeadd = function (req, res ) {
-    // console.log(req.files)
+    // console.log(req)
+    let title = req.body.title
+    let content = req.body.content
+    let tag = req.body.tag
     let filearr = req.files
     for(let i=0,b=filearr.length;i<b;i++){
         var usernodeImg = new usernodeimg();
         usernodeImg.filename = filearr[i].filename
+        usernodeImg.title = title
+        usernodeImg.tag = tag
+        usernodeImg.content =content
         usernodeImg.path = config.host + config.port + '/images/' + filearr[i].filename
         usernodeImg.save(function (err,usernodeImg){
             if (err) return console.error(err);
-              res.end("aaa")
+            // not res for wx
         }) 
 
     }

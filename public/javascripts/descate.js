@@ -3,15 +3,15 @@ function descateadd(self) {
     var file = ((self.parents('tr').find("input[type='file']").val()).split("\\"))[2];
     var fileobj = self.parents('tr').find("input[type='file']").get(0).files[0];
     // var des = self.parents('tr').find("input[name='des']").val();
-    var po = self.parents('tr').find("input[name='po']").val();
-    if (!file || !po) {
+    // var po = self.parents('tr').find("input[name='po']").val();
+    if (!file ) {
         layer.alert('请填写正确的数据！', {icon: 6});
     } else {
             var formData = new FormData();
             formData.append("file",fileobj)
             formData.append("img_name",file)
             // formData.append("des",des)
-            formData.append("po",po)
+            // formData.append("po",po)
             $.ajax({  
                 url: "/des/cate/add", 
                 type: 'POST',  
@@ -42,11 +42,11 @@ function renderTbody(data) {
     var kc_config_table = $('#kc_config_table');
     for (var i=0;i<data.length;i++) {
         tr += '<tr>' +
-            '<td><image src="'+ data[i].path +'" style="height:5rem;width:5rem"></td>' +
+            '<td><image src="'+ data[i].path +'" style="height:5rem;width:5rem"></td>' 
             // '<td><input type="text" name="des" value="'+ data[i].des +'" disabled="disabled"></td>' 
-            '<td><input type="text" name="po" value="'+ data[i].po +'" disabled="disabled"></td>' 
+            // '<td><input type="text" name="po" value="'+ data[i].po +'" disabled="disabled"></td>' 
         tr += '<td>' +
-            '<button type="button" class="btn btn-danger btn-sm" value="'+data[i].des+'" onclick="desdel($(this))">删除</button>' +
+            '<button type="button" class="btn btn-danger btn-sm" value="'+data[i].filename+'" onclick="desdel($(this))">删除</button>' +
             '</td>' +
             '</tr>'
     }
@@ -54,7 +54,7 @@ function renderTbody(data) {
     ftr += '<tr>' +
         '<td><input type="file" name="file" ><div><label for="file"  style="position: absolute;left:90px">上传</label> </div></td>' +
         // '<td><input type="text" name="des" ></td>' +
-        '<td><input type="text" name="po" ></td>' +
+        // '<td><input type="text" name="po" ></td>' +
         '<td><button type="button" class="btn btn-success btn-sm" onclick="desadd($(this))">增加</button></td>' +
         '</tr>';
 
