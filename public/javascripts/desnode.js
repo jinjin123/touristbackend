@@ -24,7 +24,7 @@ function desnodeadd(self) {
                 contentType: false,
                 success:function(data){
                     console.log(data.data)
-                    renderTbody(data.data)
+                    window.location.reload(true)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -34,7 +34,7 @@ function desnodedel(self) {
     var title = self[0].value
     var data = {"title":title}
     $.post("/des/node/del",data,function(data){
-        renderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }

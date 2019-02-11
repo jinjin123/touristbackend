@@ -22,7 +22,7 @@ function storeadd(self) {
                 contentType: false,
                 success:function(data){
                     console.log(data.data)
-                    renderTbody(data.data)
+                    window.location.reload(true)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -36,7 +36,7 @@ function storedel(self) {
     // var des = self.parents('tr').find("input[name='']").val();
     var data = {"filename":file}
     $.post("/store/del",data,function(data){
-        renderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }

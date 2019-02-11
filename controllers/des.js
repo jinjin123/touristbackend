@@ -64,14 +64,16 @@ exports.api_des_node = function (req, res ) {
            data.yjpaddB=img
            for(let i=0,b=desimgList.length;i<b;i++){
             let img = desimgList[i].path
-            let title = desimgList[i].des
+            let filename = desimgList[i].filename
+            let title = desimgList[i].title
             let intro = '逛街玩乐两不误，嗨爆二日嗨嗨嗨'
             imgs.push(img)
             tmp.push({"imgUrls":img,"title":title,"intro":intro,
             "img":img,"img1":img,"img2":img,"user":'zhangcece',
-            "title":title,
-            "time":"2018.10.08","peopleNum":'1934',
-             "mddbj":img})
+           "filename":filename,"yjlhead":img,"yjphead":img,"yjpeyee":img,"yjpemail":img,"yjpface":img,
+            "time":"2018.10.08","peopleNum":'1934',"yjpemailn":'199',
+             "mddbj":img,"yjlbt":'世界尽头与冷酷仙境，冰岛10日顺时针环岛',
+            "yjlwz":'一个人逛迪士尼 简直不要太爽 所有项目都不用排队',"yjpeyen":'abc',"yjpsj":'2天前'})
            }
             data.yjpbt='世界尽头与冷酷仙境，冰岛10日顺时针环岛'
             data.yjpemailn='199',
@@ -235,6 +237,7 @@ exports.nodeadd = function (req, res ) {
     }
 }
 exports.nodedel = function(req,res){
+    // console.log(req.body)
     var where = {"title": req.body.title}
     desnodeimg.remove(where,function (err,desnodeimg){
         if (err) return console.error(err);

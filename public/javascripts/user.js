@@ -24,7 +24,8 @@ function user_index_add(self) {
                 contentType: false,
                 success:function(data){
                     console.log(data.data)
-                    renderTbody(data.data)
+                    window.location.reload(true)
+                    // renderTbody(data.data)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -37,7 +38,7 @@ function user_index_del(self) {
     var des = self.parents('tr').find("input[name='des']").val();
     var data = {"des":des}
     $.post("/user/index/del",data,function(data){
-        renderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }
@@ -87,7 +88,8 @@ function regadd(self){
                 contentType: false,
                 success:function(data){
                     console.log(data)
-                    regrenderTbody(data.data)
+                    // regrenderTbody(data.data)
+                    window.location.reload(true)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -99,7 +101,7 @@ function regdel(self) {
     var data = {"filename":filename}
     $.post("/user/register/del",data,function(data){
         console.log(data)
-        regrenderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }
@@ -146,7 +148,8 @@ function lgadd(self){
                 contentType: false,
                 success:function(data){
                     console.log(data)
-                    lgrenderTbody(data.data)
+                    // lgrenderTbody(data.data)
+                    window.location.reload(true)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -157,7 +160,7 @@ function lgdel(self) {
     var data = {"filename":filename}
     $.post("/user/login/del",data,function(data){
         console.log(data)
-        lgrenderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }

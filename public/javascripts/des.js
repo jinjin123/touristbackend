@@ -22,7 +22,7 @@ function desadd(self) {
                 contentType: false,
                 success:function(data){
                     console.log(data.data)
-                    renderTbody(data.data)
+                    window.location.reload(true)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -32,7 +32,7 @@ function desdel(self) {
     var des = self[0].value
     var data = {"des":des}
     $.post("/des/index/del",data,function(data){
-        renderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }

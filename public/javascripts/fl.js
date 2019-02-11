@@ -22,7 +22,7 @@ function fladd(self) {
                 contentType: false,
                 success:function(data){
                     console.log(data.data)
-                    renderTbody(data.data)
+                    window.location.reload(true)
                 }  
             })
             layer.msg('配置添加成功', {icon: 1});
@@ -32,7 +32,7 @@ function fldel(self) {
     var file = self[0].value
     var data = {"filename":file}
     $.post("/index/follow/del",data,function(data){
-        renderTbody(data.data)
+        window.location.reload(true)
     })
     layer.msg('配置添加成功', {icon: 1});
 }
